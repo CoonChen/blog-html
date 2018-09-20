@@ -1,0 +1,29 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.moowork.gradle:gradle-node-plugin:1.2.0"
+    }
+}
+
+apply plugin: "com.moowork.node"
+
+task initDist {
+    doLast{
+        file('dist').deleteDir()
+        file('dist').mkdir()
+    }
+}
+
+task install(type: NpmTask) {
+    args = ['--registry', 'https://registry.npm.taobao.org', 'install']
+}
+
+task buildUi(type: NpmTask, dependsOn:[ 'install','initDist']) {
+    args = ['run', 'build']
+}
+
+
