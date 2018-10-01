@@ -28,15 +28,15 @@
                 <i class="fa fa-resistance"></i>
                 <span class="menu-item">导航三</span>
               </template>
-              <el-menu-item index="setting" key="setting">关于系统</el-menu-item>
-              <el-menu-item index="about" key="about">工匠之技</el-menu-item>
+              <el-menu-item index="about" key="about">关于系统</el-menu-item>
+              <el-menu-item index="setting" key="setting">工匠之技</el-menu-item>
             </el-submenu>
           </el-menu>
         </div>
 
       <!--头部header-->
         <div class="el-header" :class="{'el-main-collapse':collapse}">
-          <div class="header-aside">
+          <div class="header-aside" :class="{'header-aside-rotate1':menuIconRotate}">
             <img src="../assets/menu.png" style="cursor:pointer;" width="32" height="32"  @click="collapseClick">
           </div>
           <div class="header-notes">
@@ -73,11 +73,13 @@
           return {
             collapse: false,
             dialogVisible: false,
+            menuIconRotate: false
           }
       },
       methods: {
         collapseClick() {
           this.collapse = !this.collapse;
+          this.menuIconRotate = !this.menuIconRotate;
         },
         notesClick() {
 
@@ -119,7 +121,7 @@
     left: 0;
   }
   .aside-menu:not(.el-menu--collapse){
-    width: 209px;
+    width: 230px;
   }
   .el-aside > ul {
     height:100%;
@@ -128,7 +130,7 @@
     background-color: #ffffff;
     position: absolute;
     right: 0;
-    left: 210px;
+    left: 231px;
     height: 56px;
     -webkit-transition: left .3s ease-in-out;
     transition: left .3s ease-in-out;
@@ -138,7 +140,7 @@
   .el-main {
     background: #f8f9fa;
     position: absolute;
-    left: 210px;
+    left: 231px;
     right: 0;
     top: 56px;
     bottom: 0;
@@ -157,6 +159,32 @@
     width: 48px;
     height: 48px;
   }
+
+  .header-aside img{
+    transition:all .3s ease-in-out;
+    -webkit-transition:all .3s ease-in-out;
+    -moz-transition:all .3s ease-in-out;
+    -ms-transition:all .3s ease-in-out;
+    -o-transition:all .3s ease-in-out;
+  }
+
+  .header-aside-rotate1 img{
+    transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    -o-transform:rotate(90deg)
+  }
+
+  .header-aside-rotate2 img{
+    transform:rotate(-90deg);
+    -webkit-transform:rotate(-90deg);
+    -moz-transform:rotate(-90deg);
+    -ms-transform:rotate(-90deg);
+    -o-transform:rotate(-90deg)
+  }
+
+
   .header-notes {
     position: absolute;
     right: 100px;
@@ -172,7 +200,7 @@
     height: 50px;
     line-height: 50px;
     padding: 0 45px;
-    min-width: 200px;
+    min-width: 220px;
     left: 10px;
   }
 </style>
