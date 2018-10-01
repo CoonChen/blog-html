@@ -18,12 +18,12 @@ task initDist {
     }
 }
 
-//task install(type: NpmTask) {
-//    args = ['--registry', 'https://registry.npm.taobao.org', 'install']
-//}
-//
-//task buildUi(type: NpmTask, dependsOn:[ 'install','initDist']) {
-//    args = ['run', 'build']
-//}
+task install(type: NpmTask) {
+    args = ['--registry', 'https://registry.npm.taobao.org', 'install']
+}
+
+task buildUi(type: NpmTask, dependsOn:[ 'install','initDist']) {
+    args = ['run', 'build']
+}
 
 
